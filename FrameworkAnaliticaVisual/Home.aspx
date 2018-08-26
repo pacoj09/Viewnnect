@@ -112,7 +112,7 @@
                         <asp:TextBox ID="txtUser" runat="server" Style="width: 430px;"></asp:TextBox>
                         <br>
                         Contrase&ntilde;a:<br>
-                        <asp:TextBox ID="txtPassword" runat="server" Style="width: 430px;"></asp:TextBox>
+                        <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" Style="width: 430px;"></asp:TextBox>
                         <br>
                         <br>
                         <asp:Button ID="btnProbarConexion" CssClass="btn btn-default" runat="server" Text="Probar Conexion" OnClick="btnProbarConexion_Click" OnClientClick="return ValidarFormulario()" />
