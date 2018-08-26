@@ -4,7 +4,7 @@
 
 <html>
 <head>
-    <title>Viewnnet Framework de Analitica Visual</title>
+    <title>Viewnnect Framework de Analitica Visual</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -40,7 +40,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/Home.aspx">Viewnnet</a>
+                    <a class="navbar-brand" runat="server" href="~/Home.aspx">Viewnnect</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
@@ -56,7 +56,7 @@
             <hr />
             <div align="center">
                 <footer>
-                    <p>&copy; 2018 - Viewnnet - Framework de Analitica Visual</p>
+                    <p>&copy; 2018 - Viewnnect - Framework de Analitica Visual</p>
                 </footer>
             </div>
 

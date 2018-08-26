@@ -15,3 +15,8 @@ C:\Users\pacoa\Documents\GitProyects\ProyectoFrameWorkAnaliticaVisual_Juanpa\Fra
 C:\Users\pacoa\Documents\GitProyects\ProyectoFrameWorkAnaliticaVisual_Juanpa\Framework\ConexionBD\obj\Debug\ConexionBD.csproj.CoreCompileInputs.cache
 C:\Users\pacoa\Documents\GitProyects\ProyectoFrameWorkAnaliticaVisual_Juanpa\Framework\ConexionBD\obj\Debug\ConexionBD.dll
 C:\Users\pacoa\Documents\GitProyects\ProyectoFrameWorkAnaliticaVisual_Juanpa\Framework\ConexionBD\obj\Debug\ConexionBD.pdb
+C:\Users\pacoa\Documents\GitProyects\Viewnnect\ConexionBD\bin\Debug\ConexionBD.dll
+C:\Users\pacoa\Documents\GitProyects\Viewnnect\ConexionBD\bin\Debug\ConexionBD.pdb
+C:\Users\pacoa\Documents\GitProyects\Viewnnect\ConexionBD\obj\Debug\ConexionBD.csproj.CoreCompileInputs.cache
+C:\Users\pacoa\Documents\GitProyects\Viewnnect\ConexionBD\obj\Debug\ConexionBD.dll
+C:\Users\pacoa\Documents\GitProyects\Viewnnect\ConexionBD\obj\Debug\ConexionBD.pdb
