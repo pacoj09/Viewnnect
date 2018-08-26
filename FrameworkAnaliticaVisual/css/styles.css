@@ -1,0 +1,43 @@
+﻿.DoubleColumn {
+    width: 100%;
+}
+
+.Content {
+    /*display: inline-block;*/
+    border: 1px solid white;
+    width:47%;
+    float:left;
+}
+
+.laclase {
+    width:80%;
+    font-size: 16px;
+    font-family: "Verdana", Times, serif;
+}
+
+#ContentPlaceHolder1_gvDatos {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+}
+
+    #ContentPlaceHolder1_gvDatos td, #ContentPlaceHolder1_gvDatos th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #ContentPlaceHolder1_gvDatos tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #ContentPlaceHolder1_gvDatos tr:hover {
+        background-color: #ddd;
+    }
+
+    #ContentPlaceHolder1_gvDatos th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        background-color: #38729c;
+        color: white;
+    }

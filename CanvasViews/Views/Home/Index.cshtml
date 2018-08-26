@@ -1,0 +1,225 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <title>Index</title>
+</head>
+<body>
+    <div id="cabezera">
+        <h1>Viewnnet</h1>
+    </div>
+    <div id="graphsContainer"></div>
+    <hr />
+    <div align="center">
+        <footer>
+            <p>&copy; 2018 - Viewnnet - Framework de Analitica Visual</p>
+        </footer>
+    </div>
+    <script type="text/javascript">
+
+        var type1 = '@Html.Raw(ViewBag.type1)';
+        var type2 = '@Html.Raw(ViewBag.type2)';
+        var type3 = '@Html.Raw(ViewBag.type3)';
+        var type4 = '@Html.Raw(ViewBag.type4)';
+        var count = @Html.Raw(ViewBag.GraphCount);
+        var enable = @Html.Raw(ViewBag.Enable);
+
+        window.onload = function () {
+            var i;
+            for (i = 1; i <= count; i++) {
+                printGraph(i);
+            }
+            switch (count) {
+                case 1:
+                    loadChart1();
+                    document.getElementById("ddlChartType1").value = type1;
+                    break;
+                case 2:
+                    loadChart1();
+                    loadChart2();
+                    document.getElementById("ddlChartType1").value = type1;
+                    document.getElementById("ddlChartType2").value = type2;
+                    break;
+                case 3:
+                    loadChart1();
+                    loadChart2();
+                    loadChart3();
+                    document.getElementById("ddlChartType1").value = type1;
+                    document.getElementById("ddlChartType2").value = type2;
+                    document.getElementById("ddlChartType3").value = type3;
+                    break;
+                case 4:
+                    loadChart1();
+                    loadChart2();
+                    loadChart3();
+                    loadChart4();
+                    document.getElementById("ddlChartType1").value = type1;
+                    document.getElementById("ddlChartType2").value = type2;
+                    document.getElementById("ddlChartType3").value = type3;
+                    document.getElementById("ddlChartType4").value = type4;
+                    break;
+            }
+            if (enable === 0) {
+                alert('Ups!, hay vistas vacías!, ya que no hay elementos que coincidan con la Vista Principal');
+            }
+        };
+
+        function printGraph(index) {
+            if (index == 1) {
+                document.getElementById('graphsContainer').innerHTML += '<div id="graph' + index + '" class="graphMain"></div>'
+                document.getElementById('graph' + index).innerHTML += 'Tipo de grafico: <select id="ddlChartType' + index + '" onchange="reloadChart(this.value,' + index + ')"><option value="bar">Barra</option><option value="spline">Spline</option><option value="area">Area</option><option value="pie">Pastel</option><option value="doughnut">Dona</option></select>';
+                document.getElementById('graph' + index).innerHTML += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="image" src="/img/filter.png" height="30" width="30" onclick="removeFilter()"/>';
+                document.getElementById('graph' + index).innerHTML += '<div id="chartContainer' + index + '" style="height: 100%; width: 100%;"></div>';
+            } else {
+                document.getElementById('graphsContainer').innerHTML += '<div id="graph' + index + '" class="graphs'+count+'"></div>'
+                document.getElementById('graph' + index).innerHTML += 'Tipo de grafico: <select id="ddlChartType' + index + '" onchange="reloadChart(this.value,' + index + ')"><option value="bar">Barra</option><option value="spline">Spline</option><option value="area">Area</option><option value="pie">Pastel</option><option value="doughnut">Dona</option></select>';
+                document.getElementById('graph' + index).innerHTML += '<div id="chartContainer' + index + '" style="height: 100%; width: 100%;"></div>';
+            }
+        }
+
+        function getChartType() {
+            var chartType = document.getElementById("ddlChartType1").value;
+            for (var i = 2; i <= count; i++) {
+                chartType += "|" + document.getElementById("ddlChartType"+i).value;
+            }
+            return chartType;
+        }
+
+        function onClick(e) {
+            var chartType = getChartType();
+            const url = '@Url.Action("Index", "Home", new { id1 = "ID", types = "CT"})'.replace("ID", e.dataPoint.id).replace("CT", chartType);
+            const parseResult = new DOMParser().parseFromString(url, "text/html");
+            const parsedUrl = parseResult.documentElement.textContent;
+            location.href = parsedUrl;
+        }
+
+        function removeFilter() {
+            var chartType = getChartType();
+            const url = '@Url.Action("Index", "Home", new { id1 = "0", types = "CT"})'.replace("CT", chartType);
+            const parseResult = new DOMParser().parseFromString(url, "text/html");
+            const parsedUrl = parseResult.documentElement.textContent;
+            location.href = parsedUrl;
+        }
+
+        function reloadChart(value, chartID) {
+            switch (chartID) {
+                case 1:
+                    type1 = value;
+                    loadChart1();
+                    break;
+                case 2:
+                    type2 = value;
+                    loadChart2();
+                    break;
+                case 3:
+                    type3 = value;
+                    loadChart3();
+                    break;
+                case 4:
+                    type4 = value;
+                    loadChart4();
+                    break;
+            }
+        }
+
+        function loadChart1() {
+            var chart = new CanvasJS.Chart("chartContainer1", {
+				theme: "theme2",
+				animationEnabled: true,
+				title: {
+					text: "Vista 1"
+                },
+                toolTip: {
+                    content: "y: {y} <br/> x: {label} <br/> name: {name} <br/> indexLabel: {indexLabel}"
+                },
+				data: [
+				{
+                    type: type1, //change type to bar, line, area, pie, etc
+                    indexLabelPlacement: "outside",
+                    showInLegend: true,
+                    click: onClick,
+                    //Uncomment below line to add data coming from the controller.
+					dataPoints: @Html.Raw(ViewBag.DataPoints1)
+				}
+				]
+			});
+			chart.render();
+        }
+
+        function loadChart2() {
+            var chart = new CanvasJS.Chart("chartContainer2", {
+				theme: "theme2",
+				animationEnabled: true,
+				title: {
+					text: "Vista 2"
+                },
+                toolTip: {
+                    content: "y: {y} <br/> x: {label} <br/> name: {name} <br/> indexLabel: {indexLabel}"
+                },
+				data: [
+				{
+                    type: type2, //change type to bar, line, area, pie, etc
+                    indexLabelPlacement: "outside",
+                    showInLegend: true,
+                    //Uncomment below line to add data coming from the controller.
+					dataPoints: @Html.Raw(ViewBag.DataPoints2)
+				}
+				]
+			});
+			chart.render();
+        }
+
+        function loadChart3() {
+            var chart = new CanvasJS.Chart("chartContainer3", {
+				theme: "theme2",
+				animationEnabled: true,
+				title: {
+					text: "Vista 3"
+                },
+                toolTip: {
+                    content: "y: {y} <br/> x: {label} <br/> name: {name} <br/> indexLabel: {indexLabel}"
+                },
+				data: [
+				{
+                    type: type3, //change type to bar, line, area, pie, etc
+                    indexLabelPlacement: "outside",
+                    showInLegend: true,
+                    //Uncomment below line to add data coming from the controller.
+					dataPoints: @Html.Raw(ViewBag.DataPoints3)
+				}
+				]
+			});
+			chart.render();
+        }
+
+        function loadChart4() {
+            var chart = new CanvasJS.Chart("chartContainer4", {
+				theme: "theme2",
+				animationEnabled: true,
+				title: {
+                    text: "Vista 4"
+                },
+                toolTip: {
+                    content: "y: {y} <br/> x: {label} <br/> name: {name} <br/> indexLabel: {indexLabel}"
+                },
+				data: [
+				{
+                    type: type4, //change type to bar, line, area, pie, etc
+                    indexLabelPlacement: "outside",
+                    showInLegend: true,
+                    //Uncomment below line to add data coming from the controller.
+					dataPoints: @Html.Raw(ViewBag.DataPoints4)
+				}
+				]
+			});
+			chart.render();
+        }
+    </script>
+</body>
+</html>			
