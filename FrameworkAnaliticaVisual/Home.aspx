@@ -95,7 +95,7 @@
                     <br />
                     <fieldset>
                         <legend>Datos del Servidor:</legend>
-                        Selecciones el tipo de conexion que desea establecer:<br>
+                        Selecciones el tipo de conexión que desea establecer:<br>
                         <asp:DropDownList ID="ddlConexion" runat="server">
                             <asp:ListItem Value="SQL Server">SQL Server</asp:ListItem>
                             <asp:ListItem Value="Oracle">Oracle</asp:ListItem>
@@ -118,9 +118,6 @@
                         <asp:Button ID="btnProbarConexion" CssClass="btn btn-default" runat="server" Text="Probar Conexion" OnClick="btnProbarConexion_Click" OnClientClick="return ValidarFormulario()" />
                     </fieldset>
                     <br />
-                    <hr />
-                    <br />
-                    <p>NOTA: Si tiene problemas de acceso pongase en contacto con nosotros</p>
                 </div>
             </asp:WizardStep>
 
@@ -143,7 +140,7 @@
                     <br />
                     <p>
                         NOTA: Debe de establecer una tabla principal antes de agregar tablas secundarias.<br />
-                        Las tablas secundarias deben de estar entrelasadas con la principal por constraints.
+                        Las tablas secundarias deben de estar entrelazadas con la principal por constraints.
                     </p>
                 </div>
             </asp:WizardStep>
@@ -154,7 +151,7 @@
                     <br />
                     <fieldset>
                         <legend>Vistas:</legend>
-                        Seleccione el numero de vistas:<br>
+                        Seleccione el número de vistas:<br>
                         <asp:DropDownList ID="ddlNumeroVistas" runat="server" onChange="habilitarGrid(this.value);">
                             <asp:ListItem Selected="True" Value="1">1</asp:ListItem>
                             <asp:ListItem Value="2">2</asp:ListItem>
@@ -291,7 +288,7 @@
                     <hr />
                     <br />
                     <p>
-                        NOTA: Los enlaces no deben de repetirce por vista, si hay repetidos se tomara en cuenta el primer enlace unicamente. Debe exitir la "Posicion Y" en todas las vistas.
+                        NOTA: Los enlaces no deben de repetirse por vista, si hay repetidos se tomara en cuenta el primer enlace únicamente. De preferencia establezca la posición "X" y "Y".
                     </p>
                 </div>
                 <hr />
@@ -303,7 +300,7 @@
                     <hr />
                     <br />
                     <p>
-                        NOTA: Debe de existir el archivo clsVista.cs, de no existir debera crearlo en el directorio seleccionado.
+                        NOTA: Debe de existir el archivo clsVista.cs, de no existir deberá crearlo en el directorio seleccionado.
                     </p>
                 </div>
             </asp:WizardStep>
